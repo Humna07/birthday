@@ -155,13 +155,7 @@
   <div class="heart" style="left: 70%; top: 65%; animation-delay: 2.5s;"></div>
   <div class="heart" style="left: 80%; top: 80%; animation-delay: 4.5s;"></div>
   <div class="heart" style="left: 90%; top: 70%; animation-delay: 1.5s;"></div>
-<audio autoplay loop id="backgroundMusic">
-    <source src="music.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <audio autoplay loop id="newSong">
-    <source src="music1.mp3" type="audio/mp3">
+<audio id="backgroundMusic" autoplay>
     Your browser does not support the audio element.
   </audio>
 
@@ -186,23 +180,50 @@
   <div class="footer">
     <p>Made with love by yours Humna 💕</p>
   </div>
+  
 
   <script>
+    // --- Message Box Animation (your existing code) ---
     document.addEventListener('DOMContentLoaded', function() {
       const message1 = document.getElementById('message1');
       const message2 = document.getElementById('message2');
 
-      // Show the first message immediately
       setTimeout(() => {
         message1.style.opacity = '1';
         message1.style.transform = 'translateY(0)';
-      }, 500); // Appear 0.5 seconds after page load
+      }, 500);
 
-      // Show the second message after a delay from the first
       setTimeout(() => {
         message2.style.opacity = '1';
         message2.style.transform = 'translateY(0)';
-      }, 2500); // Appear 2.5 seconds after page load (2 seconds after first message starts appearing)
+      }, 2500);
+    });
+
+    // --- Sequential Music Playback (new code for page2.html) ---
+    const musicPlayerPage2 = document.getElementById('backgroundMusic'); // Using a different variable name for clarity if both pages are open
+    const playlistPage2 = ["music.mp3", "music1.mp3"]; // Your list of songs
+    let currentSongIndexPage2 = 0;
+
+    function playCurrentSongPage2() {
+      musicPlayerPage2.src = playlistPage2[currentSongIndexPage2];
+      musicPlayerPage2.play().catch(e => console.error("Error playing audio on Page 2:", e));
+    }
+
+    musicPlayerPage2.addEventListener('ended', () => {
+      currentSongIndexPage2++;
+      if (currentSongIndexPage2 < playlistPage2.length) {
+        playCurrentSongPage2();
+      } else {
+        // Loop back to the first song
+        currentSongIndexPage2 = 0;
+        playCurrentSongPage2();
+      }
+    });
+
+    // Start playing the first song when the page loads
+    // Autoplay might be blocked by browsers, consider a user interaction.
+    document.addEventListener('DOMContentLoaded', () => {
+        playCurrentSongPage2();
     });
   </script>
 </body>
