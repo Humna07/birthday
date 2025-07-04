@@ -172,15 +172,8 @@
   <div class="heart" style="left: 80%; top: 80%; animation-delay: 4.5s;"></div>
   <div class="heart" style="left: 90%; top: 70%; animation-delay: 1.5s;"></div>
 
- <audio autoplay loop id="backgroundMusic">
-    <source src="music.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <audio autoplay loop id="newSong">
-    <source src="music1.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="backgroundMusic" autoplay>
+   </audio>
 
   <header>
     <h1>Happy Birthday My Bestest Test Test Friend Azhar 🎉</h1>
@@ -209,6 +202,37 @@
   <div class="footer">
     <p>Made with love by yours Humna 💕</p>
   </div>
+  <script>
+    const musicPlayer = document.getElementById('backgroundMusic');
+    const playlist = ["music.mp3", "music1.mp3"]; // Your list of songs in order
+    let currentSongIndex = 0;
+
+    // Function to play the current song
+    function playCurrentSong() {
+      musicPlayer.src = playlist[currentSongIndex];
+      musicPlayer.play().catch(e => console.error("Error playing audio:", e)); // Add catch for Promise rejection
+    }
+
+    // Event listener for when a song ends
+    musicPlayer.addEventListener('ended', () => {
+      currentSongIndex++; // Move to the next song
+      if (currentSongIndex < playlist.length) {
+        // If there's a next song, play it
+        playCurrentSong();
+      } else {
+        // If it's the end of the playlist, loop back to the first song
+        currentSongIndex = 0; // Reset to the first song
+        playCurrentSong(); // Play the first song again
+      }
+    });
+
+    // Start playing the first song when the page loads
+    // Note: Browsers often block autoplay without user interaction.
+    // Consider adding a play button for the user to click if autoplay doesn't work reliably.
+    document.addEventListener('DOMContentLoaded', () => {
+        playCurrentSong();
+    });
+  </script>
 
 </body>
 </html>
