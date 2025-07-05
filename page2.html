@@ -99,3 +99,187 @@
       height: 30px;
       background-color: #FF69B4;
       transform: rotate(-45deg);
+      animation: floatUp 6s infinite ease-in-out;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #FF69B4;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -15px;
+      left: 0;
+    }
+
+    .heart:after {
+      top: 0;
+      left: 15px;
+    }
+
+    /* Animation for floating hearts */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-500px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* --- Responsive Adjustments (Mobile View) --- */
+
+    /* For screens smaller than 768px (common breakpoint for tablets/mobiles) */
+    @media (max-width: 768px) {
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 0 5px; /* Reduce margin between buttons */
+        }
+
+        .short-message-box {
+            max-width: 280px; /* Adjust max-width for smaller screens */
+            padding: 15px; /* Reduce padding */
+            border-radius: 10px;
+            margin: 20px auto; /* Adjust margin */
+        }
+
+        .short-message-box p {
+            font-size: 1em; /* Smaller font size */
+        }
+
+        .special-message-box {
+            max-width: 90%; /* Use percentage for flexibility */
+            padding: 20px; /* Reduce padding */
+            border-radius: 15px;
+            margin: 20px auto; /* Adjust margin */
+        }
+
+        .special-message-box p {
+            font-size: 0.95em; /* Slightly smaller font size */
+        }
+
+        header h1 {
+            font-size: 2em; /* Smaller header on mobile */
+            padding-top: 30px; /* Adjust padding */
+        }
+
+        .footer {
+            margin: 30px 0; /* Adjust footer margin */
+            font-size: 0.8em; /* Smaller footer text */
+        }
+    }
+
+    /* For very small screens (e.g., phones in portrait mode) */
+    @media (max-width: 480px) {
+        .nav-buttons button {
+            padding: 8px 15px;
+            font-size: 0.9em;
+            margin: 0 3px;
+        }
+
+        .short-message-box {
+            max-width: 250px;
+            padding: 12px;
+        }
+
+        .short-message-box p {
+            font-size: 0.9em;
+        }
+
+        .special-message-box {
+            max-width: 95%;
+            padding: 15px;
+        }
+
+        .special-message-box p {
+            font-size: 0.9em;
+        }
+
+        header h1 {
+            font-size: 1.6em;
+            padding-top: 20px;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart" style="left: 10%; top: 80%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 20%; top: 90%; animation-delay: 2s;"></div>
+  <div class="heart" style="left: 30%; top: 70%; animation-delay: 4s;"></div>
+  <div class="heart" style="left: 40%; top: 85%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 50%; top: 75%; animation-delay: 3s;"></div>
+  <div class="heart" style="left: 60%; top: 95%; animation-delay: 0.5s;"></div>
+  <div class="heart" style="left: 70%; top: 65%; animation-delay: 2.5s;"></div>
+  <div class="heart" style="left: 80%; top: 80%; animation-delay: 4.5s;"></div>
+  <div class="heart" style="left: 90%; top: 70%; animation-delay: 1.5s;"></div>
+
+    <audio id="backgroundMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <header>
+    <h1>A Little More For You😊</h1>
+  </header>
+
+  <div class="nav-buttons">
+    <button onclick="window.location.href='index.html'">Go Back</button>
+  </div>
+
+  <div class="short-message-box" id="message1">
+    <p>I lOVE YOU MY JAN 💕🙈😘</p>
+  </div>
+
+  <div class="special-message-box" id="message2">
+    <p><em>Bs EK CHOTI SI BATT🙃..."KABHI NARAZ NA HONA MERE SY🥺,CHAHY GUSSA KRLENA MERE UPPER HI,KUCH BURA LAGY TW DIRIK BOL DENA🙂,BUT KABHI BATT KRNA NA CHORNA🥺,BARDASHAT NAI HOGA MEREE SY🥺</em></p>
+  </div>
+
+  <div class="footer">
+    <p>Made with love by yours Humna 💕</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const message1 = document.getElementById('message1');
+      const message2 = document.getElementById('message2');
+
+      // Show the first message immediately
+      setTimeout(() => {
+        message1.style.opacity = '1';
+        message1.style.transform = 'translateY(0)';
+      }, 500); // Appear 0.5 seconds after page load
+
+      // Show the second message after a delay from the first
+      setTimeout(() => {
+        message2.style.opacity = '1';
+        message2.style.transform = 'translateY(0)';
+      }, 2500); // Appear 2.5 seconds after page load (2 seconds after first message starts appearing)
+
+      // Music autoplay attempt
+      const backgroundMusic = document.querySelector('audio');
+      if (backgroundMusic) {
+          backgroundMusic.play().catch(e => {
+              console.error("Autoplay failed:", e);
+              // You can add a visual cue or a play button here if autoplay fails
+          });
+      }
+    });
+  </script>
+</body>
+</html>
