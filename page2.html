@@ -156,8 +156,7 @@
   <div class="heart" style="left: 80%; top: 80%; animation-delay: 4.5s;"></div>
   <div class="heart" style="left: 90%; top: 70%; animation-delay: 1.5s;"></div>
 
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mp3">
+  <audio id="backgroundMusic" autoplay>
     Your browser does not support the audio element.
   </audio>
 
@@ -166,7 +165,7 @@
   </header>
 
   <div class="nav-buttons">
-    <button onclick="window.location.href='d.html'">Go Back</button>
+    <button onclick="window.location.href='index.html'">Go Back</button>
   </div>
 
   <div class="short-message-box" id="message1">
@@ -182,6 +181,50 @@
   </div>
 
   <script>
+    const musicPlayer = document.getElementById('backgroundMusic');
+    // Define your playlist here
+    const playlist = ["music.mp3", "music1.mp3"]; // Ensure these files are in the same directory
+    let currentSongIndex = 0;
+
+    // Function to play the current song from the playlist
+    function playCurrentSong() {
+      if (playlist.length === 0) {
+        console.log("No songs in the playlist.");
+        return;
+      }
+      musicPlayer.src = playlist[currentSongIndex];
+      musicPlayer.play().catch(e => {
+        console.error("Autoplay failed or user interaction required:", e);
+        // If autoplay is blocked, you might want to show a play button to the user.
+        // For example:
+        // const playButton = document.createElement('button');
+        // playButton.textContent = 'Play Music';
+        // playButton.style.marginTop = '20px';
+        // document.body.appendChild(playButton);
+        // playButton.onclick = () => {
+        //   musicPlayer.play();
+        //   playButton.style.display = 'none';
+        // };
+      });
+    }
+
+    // Event listener to play the next song when the current one ends
+    musicPlayer.addEventListener('ended', () => {
+      currentSongIndex++; // Move to the next song
+      if (currentSongIndex < playlist.length) {
+        // If there are more songs, play the next one
+        playCurrentSong();
+      } else {
+        // If all songs have played, loop back to the beginning
+        currentSongIndex = 0; // Reset to the first song
+        playCurrentSong(); // Play the first song again
+      }
+    });
+
+    // Start playing the first song when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      playCurrentSong();
+    });
     document.addEventListener('DOMContentLoaded', function() {
       const message1 = document.getElementById('message1');
       const message2 = document.getElementById('message2');
