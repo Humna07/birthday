@@ -25,70 +25,72 @@
     }
 
     header h1 {
-      font-size: 3em;
+      font-size: 3em; /* Will adjust with media queries */
       color: #FFFFF0; /* Slightly brighter light yellow (Ivory) */
       text-shadow: 3px 3px 6px darkblue;
       animation: fadeIn 2s ease-in-out 0.5s;
     }
-    header h2{
-      font-size: 1.2em;
-      color:#Red;
+    header h2 {
+      font-size: 1.2em; /* Will adjust with media queries */
+      color: #FF0000; /* Changed from #Red to valid hex code */
     }
 
     .image-section {
-      margin: 20px 0;
+      margin: 20px auto; /* Center the section */
+      max-width: 300px; /* Limit image container width */
       animation: fadeIn 2s ease-in-out 1s;
     }
 
     .image-section img {
-      width: 100px;
+      width: 100%; /* Make image responsive to its container */
+      height: auto; /* Maintain aspect ratio */
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
 
     .azhar-greeting-box {
-      max-width: 10px; /* Reduced from 200px as per your provided code */
+      /* Corrected max-width to a reasonable value for text content */
+      max-width: 300px;
       margin: 30px auto 20px;
-      /* Background and shadow changed to purple as per your last request */
-      background: rgba(220, 195, 252, 0.9); /* Pale purple background with opacity */
+      background: rgba(220, 195, 252, 0.9);
       padding: 15px 20px;
-      border-radius: 1px;
-      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4); /* Purple shadow */
+      /* Corrected border-radius to a sensible value for rounded corners */
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4);
       animation: fadeIn 2s ease-in-out 1.2s;
     }
 
     .azhar-greeting-box p {
       font-size: 1.3em;
-      /* Text color changed to dark purple */
-      color: #5a2e98; /* Darker purple text color for contrast */
-      margin-bottom: 1; /* Changed from 1 to 0 for standard CSS */
+      color: #5a2e98;
+      margin-bottom: 0; /* Corrected to 0 for standard CSS units */
     }
 
     .message-section {
-      max-width: 12000px; /* Increased from 700px as per your provided code */
+      /* Corrected max-width to prevent extreme stretching and keep text readable */
+      max-width: 800px;
       margin: 40px auto;
-      /* Background and shadow changed to purple as per your last request */
-      background: rgba(220, 195, 252, 0.9); /* Pale purple background */
+      background: rgba(220, 195, 252, 0.9);
       padding: 30px;
-      border-radius: 5000px; /* Increased from 20px as per your provided code */
-      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4); /* Purple shadow */
+      /* Corrected border-radius to a sensible value for rounded corners */
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(128, 0, 128, 0.4);
       animation: fadeIn 2s ease-in-out 1.5s;
     }
 
     .message-section p {
       font-size: 1.2em;
       margin-bottom: 20px;
-      /* Text color changed to dark purple */
-      color: #5a2e98; /* Darker purple text color */
+      color: #5a2e98;
+      line-height: 1.6; /* Improve readability of long text */
     }
 
-    /* New styles for the navigation button on d.html */
     .next-button-container {
-      margin: 50px 0 30px; /* Add margin for spacing */
+      margin: 50px 0 30px;
     }
 
     .next-button-container button {
-      background-color: #5a2e98; /* Match the purple color */
+      background-color: #5a2e98;
       color: white;
       border: none;
       padding: 15px 30px;
@@ -100,8 +102,8 @@
     }
 
     .next-button-container button:hover {
-      background-color: #7d4cc0; /* Lighter purple on hover */
-      transform: translateY(-2px); /* Slight lift effect */
+      background-color: #7d4cc0;
+      transform: translateY(-2px);
     }
 
     .footer {
@@ -115,11 +117,11 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background-color: #FF69B4; /* Hot Pink */
+      background-color: #FF69B4;
       transform: rotate(-45deg);
       animation: floatUp 6s infinite ease-in-out;
       opacity: 0;
-      z-index: -1; /* Place hearts behind content */
+      z-index: -1;
     }
 
     .heart:before,
@@ -128,7 +130,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background-color: #FF69B4; /* Hot Pink */
+      background-color: #FF69B4;
       border-radius: 50%;
     }
 
@@ -142,7 +144,6 @@
       left: 15px;
     }
 
-    /* Animation for floating hearts */
     @keyframes floatUp {
       0% {
         transform: translateY(0) rotate(-45deg);
@@ -159,6 +160,84 @@
         opacity: 0;
       }
     }
+
+    /* --- Responsive Adjustments (Mobile View) --- */
+
+    /* For screens smaller than 768px (common breakpoint for tablets/mobiles) */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em; /* Smaller font on mobile */
+      }
+
+      .message-section {
+        padding: 20px; /* Reduce padding on smaller screens */
+        margin: 20px auto; /* Adjust margin */
+        border-radius: 15px; /* Slightly less rounded */
+      }
+
+      .message-section p {
+        font-size: 1em; /* Smaller text for better fit */
+      }
+
+      .azhar-greeting-box {
+        padding: 10px 15px; /* Reduce padding */
+        margin: 20px auto; /* Adjust margin */
+      }
+
+      .azhar-greeting-box p {
+        font-size: 1.1em; /* Adjust font size */
+      }
+
+      .next-button-container button {
+        padding: 12px 25px; /* Smaller button padding */
+        font-size: 1em; /* Smaller button text */
+      }
+
+      .nav-buttons button {
+        padding: 10px 20px;
+        font-size: 1em;
+      }
+
+      .image-section {
+        margin: 15px auto;
+        max-width: 250px; /* Smaller image on mobile */
+      }
+    }
+
+    /* For very small screens (e.g., phones in portrait mode) */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8em;
+        padding-top: 20px;
+      }
+
+      .message-section {
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 10px;
+      }
+
+      .message-section p {
+        font-size: 0.9em;
+      }
+
+      .azhar-greeting-box {
+        padding: 8px 12px;
+      }
+
+      .azhar-greeting-box p {
+        font-size: 1em;
+      }
+
+      .next-button-container button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+
+      .image-section {
+        max-width: 200px; /* Even smaller image */
+      }
+    }
   </style>
 </head>
 <body>
@@ -172,15 +251,17 @@
   <div class="heart" style="left: 80%; top: 80%; animation-delay: 4.5s;"></div>
   <div class="heart" style="left: 90%; top: 70%; animation-delay: 1.5s;"></div>
 
-<audio id="backgroundMusic" autoplay>
-   </audio>
+  <audio id="backgroundMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
   <header>
     <h1>Happy Birthday My Bestest Test Test Friend Azhar 🎉</h1>
   </header>
 
   <div class="image-section">
-    <img src="pic.jpeg.jpeg" alt="Best Friends Photo" />
+    <img src="azhar-pic.jpeg" alt="Best Friends Photo" />
   </div>
 
   <div class="azhar-greeting-box">
@@ -190,7 +271,7 @@
   <div class="message-section">
     <p>Today is your day😘, but honestly, every day feels special with you around🥰. You're not just my best friend, you're my one and only♥️. My ride or die. My cutie. ❤️</p>
     <p>Words will never be enough to describe what you mean to me🥰. You've been my strength in silence🤭, my joy in sorrow🤭, you are my everything yr🙈.</p>
-    <p>In a very short time you are close to my heart❤️ and now I can’t imagine my life without you👈, you are JAAN ❤️, SUKOON of mine❤️. you are a person like I share with you every little thing of mine without any hesitation, then hassh ab sahi hai..bta dia mene isko ..baat hogai is sy ..ab sukoon mil gya🥰, or agr baat na ho ek din hogya chlo thek hai .. 2 din hogai phr bhi koi baat nai hoi koi msg nai😕"no good morning😕" "no goodnight😕" phr jo gussa ata hai na 😬 k khn maar gya hai ye itna busy hai k ek msg krne ka bhi time nai 😬,,,like that feeling will appear k abhi samne ayai or batayon isko me achy sy😁😁... by the way Thank you so much  for existing♥️, for staying, for being YOU♥️.</p>
+    <p>In a very short time you are close to my heart❤️ and now I can’t imagine my life without you👈, you are JAAN ❤️, SUKOON of mine❤️. you are a person like I share with you every little thing of mine without any hesitation, then hassh ab sahi hai..bta dia mene isko ..baat hogai is sy ..ab sukoon mil gya🥰, or agr baat na ho ek din hogya chlo thek hai .. 2 din hogai phr bhi koi baat nai hoi koi msg nai😕"no good morning😕" "no goodnight😕" phr jo gussa ata hai na 😬 k khn maar gya hai ye itna busy hai k ek msg krne ka bhi time nai 😬,,,like that feeling will appear k abhi samne ayai or batayon isko me achy sy😁😁... by the way Thank you so much for existing♥️, for staying, for being YOU♥️.</p>
     <p>Happy Birthday once again🎂! May your life be filled with love♥️, laughter😁, and all the happiness you deserve😀.</p>
     <p>Always with you, forever and ever 💫</p>
   </div>
@@ -204,33 +285,19 @@
   </div>
   <script>
     const musicPlayer = document.getElementById('backgroundMusic');
-    const playlist = ["music.mp3", "music1.mp3"]; // Your list of songs in order
-    let currentSongIndex = 0;
+    // Important: Removed the playlist logic because the source tag in HTML directly points to music.mp3
+    // If you want a playlist, the JavaScript needs to dynamically change the source.
+    // For now, I'm assuming you just want the single music.mp3 from the <audio> tag.
 
-    // Function to play the current song
-    function playCurrentSong() {
-      musicPlayer.src = playlist[currentSongIndex];
-      musicPlayer.play().catch(e => console.error("Error playing audio:", e)); // Add catch for Promise rejection
-    }
-
-    // Event listener for when a song ends
-    musicPlayer.addEventListener('ended', () => {
-      currentSongIndex++; // Move to the next song
-      if (currentSongIndex < playlist.length) {
-        // If there's a next song, play it
-        playCurrentSong();
-      } else {
-        // If it's the end of the playlist, loop back to the first song
-        currentSongIndex = 0; // Reset to the first song
-        playCurrentSong(); // Play the first song again
-      }
-    });
-
-    // Start playing the first song when the page loads
-    // Note: Browsers often block autoplay without user interaction.
-    // Consider adding a play button for the user to click if autoplay doesn't work reliably.
+    // Start playing the music when the page loads
+    // IMPORTANT: Browsers often block autoplay without user interaction.
+    // If the music doesn't play automatically, you will need to add a "Play Music" button
+    // and a function to play it, as discussed in previous turns.
     document.addEventListener('DOMContentLoaded', () => {
-        playCurrentSong();
+      musicPlayer.play().catch(e => {
+        console.error("Autoplay failed:", e);
+        // You can display a message to the user here, or a play button.
+      });
     });
   </script>
 
